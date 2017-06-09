@@ -8,36 +8,8 @@
     "start": "hops start"
   },
   "dependencies": {
-    "babel-preset-es2015": "6.24.1",
-    "babel-preset-react": "6.24.1",
-    "babel-preset-stage-0": "6.24.1",
-    "hops-cli": "file:../hops/packages/cli",
-    "hops-config": "file:../hops/packages/config",
-    "hops-middleware": "file:../hops/packages/middleware",
-    "hops-plugin": "file:../hops/packages/plugin",
-    "hops-react": "file:../hops/packages/react",
-    "hops-redux": "file:../hops/packages/redux",
-    "hops-renderer": "file:../hops/packages/renderer",
-    "hops-root": "file:../hops/packages/root",
-    "hops-transpiler": "file:../hops/packages/transpiler",
-    "postcss-cssnext": "2.11.0"
+    "hops-cli": "^0.1.0",
+    "hops-redux": "^0.1.0"
   },
-  "hops": {},
-  "babel": {
-    "presets": [
-      [
-        "es2015",
-        {
-          "modules": false
-        }
-      ],
-      "react",
-      "stage-0"
-    ]
-  },
-  "postcss": {
-    "plugins": {
-      "postcss-cssnext": {}
-    }
-  }
+  "hops": {}
 }

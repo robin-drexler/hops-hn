@@ -3,8 +3,8 @@ import f from 'isomorphic-fetch';
 
 import { headline } from './styles.css';
 
-import { Route, Switch, Miss } from 'hops-react';
-import { render } from 'hops-redux';
+import { render, Route, Switch, Miss } from 'hops-react';
+import { createContext } from 'hops-redux';
 
 import HomePage from './HomePage';
 import DetailPage from './DetailPage';
@@ -24,26 +24,15 @@ const App = () => (
   </Switch>
 );
 
-export default render(<App />, {
-  reducers: {
-    hn: reducer
-  },
-  actionCreators: [
-    location => {
-      const result = pathToRegexp('/');
-      if (location.pathname.match(result)) {
-        return fetchFrontpageNews();
-      }
-      return () => {};
+export default render(
+  <App />,
+  createContext({
+    reducers: {
+      hn: reducer
     },
-    location => {
-      const result = pathToRegexp('/item/:id');
-      const match = location.pathname.match(result);
-      if (match) {
-        return fetchNewsItem(match[1]);
-      }
-
-      return () => {};
+    actionCreators: {
+      '/': () => fetchFrontpageNews(),
+      '/item/:id': params => fetchNewsItem(params.id)
     }
-  ]
-});
+  })
+);
